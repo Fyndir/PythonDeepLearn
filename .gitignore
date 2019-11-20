@@ -1,0 +1,12 @@
+
+code/__pycache__/
+
+data/models_caffe/classification/bvlc_alexnet.caffemodel
+
+data/models_caffe/classification/bvlc_googlenet.caffemodel
+
+data/models_caffe/face_analysis/gender_net.caffemodel
+
+*.pth
+
+*.caffemodel

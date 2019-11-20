@@ -23,7 +23,7 @@ def imshow(img, pos, k, title, take_abs=False):
 
 convert_to_gray = lambda img: np.dot(img[...,:3], [0.2989, 0.5870, 0.1140])
 
-img = convert_to_gray(plt.imread('../data/zep.jpg')).astype(np.float32)
+img = convert_to_gray(plt.imread('../data/lena.png')).astype(np.float32)
 imshow(img, 141, K1, 'identity')
 imshow(img, 142, K2, 'box blur')
 imshow(img, 143, K3, 'sharpen')

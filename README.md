@@ -11,15 +11,34 @@
 Placer vous dans le dossier **librairies** et passer les commandes suivantes, dans l'ordre indiqué :
 
 ```bash 
-sudo pip install numpy-1.17.4-cp37-cp37m-manylinux1_x86_64.whl
-sudo pip install six-1.13.0-py2.py3-none-any.whl
-sudo pip install Pillow-6.2.1-cp37-cp37m-manylinux1_x86_64.whl
-sudo pip install opencv_python-4.1.1.26-cp37-cp37m-manylinux1_x86_64.whl
-sudo pip install torch-1.3.1+cpu-cp37-cp37m-linux_x86_64.whl
-sudo pip install torchvision-0.4.1+cpu-cp37-cp37m-linux_x86_64.whl
+sudo pip install numpy
+sudo pip install six
+sudo pip install Pillow
+sudo pip install opencv_python
+sudo pip install torch
+sudo pip install torchvision
+sudo pip install matplotlib
+sudo pip installscipy
+
+cd data/models_caffe/classification
+wget http://dl.caffe.berkeleyvision.org/bvlc_googlenet.caffemodel
+wget http://dl.caffe.berkeleyvision.org/bvlc_alexnet.caffemodel
+wget http://www.robots.ox.ac.uk/~vgg/software/very_deep/caffe/VGG_ILSVRC_16_layers.caffemodel
+
+cd ../face_analysis
+wget https://github.com/GilLevi/AgeGenderDeepLearning/raw/master/models/gender_net.caffemodel
+wet https://github.com/GilLevi/AgeGenderDeepLearning/raw/master/models/age_net.caffemodel
+
+cd ../face_detection
+wget https://github.com/sr6033/face-detection-with-OpenCV-and-DNN/raw/master/res10_300x300_ssd_iter_140000.caffemodel
+
+cd ../../models_pytorch/classification
+wget https://download.pytorch.org/models/alexnet-owt-4df8aa71.pth
+wget https://download.pytorch.org/models/ig_resnext101_32x8-c38310e5.pth
+wget https://download.pytorch.org/models/ig_resnext101_32x48-3e41cc8a.pth
+
 ```
 
-Placer vous dans le fichier **data** et recuperer tous les modeles à l'aide des wget placer dans les readme
 
 ## D1_Webcam : 
 
@@ -65,7 +84,7 @@ show_video()
 
 ## D2_image_stitcher
 
-le programme permet de fusionner les trois image en une photo panoramique
+le programme permet de fusionner trois image en une photo panoramique avec la librairie **openCv**
 
 ```py
 """Automatic image stitcher."""
@@ -85,7 +104,7 @@ cv.destroyAllWindows()
 
 ## D3_classify_pth
 
-Ce programme permet de classer grace a un des modeles de reseaux de neurone situer dans le dossier **../data/models_pytorch/classification/** toute les photos contenu dans le dossier **../data/photo_1**
+Ce programme permet de classer grace a un des modeles de reseaux de neurone situer dans le dossier **../data/models_pytorch/classification/** toute les photos contenu dans le dossier **../data/photo_1** grace à la librairie **PyTorch**
 
 ```py
 """Image classification with pretrained CNNs (PyTorch).
@@ -216,7 +235,7 @@ if __name__ == '__main__':
 
 ## D4_classify_ocv
 
-Ce programme permet de classer grace a un des modeles de reseaux de neurone situer dans le dossier **../data/models_pytorch/classification/** toute les photos contenu dans le dossier **../data/photo_1**
+Ce programme permet de classer grace a un des modeles de reseaux de neurone situer dans le dossier **../data/models_pytorch/classification/** toute les photos contenu dans le dossier **../data/photo_1** grace à la librairie **openCV**
 
 
 ```py
@@ -310,6 +329,8 @@ if __name__ == '__main__':
 
 ## D5_convolutions
 
+Application en traitement d'images
+
 ```py
 """Kernel convolutions."""
 
@@ -347,6 +368,8 @@ plt.show()
 ```
 
 ## D6_alexnet_visu
+
+Visualisation des 96 noyaux (de taille 11×11×3) appris par la première couche de convolution du model Alexnet.
 
 ```py
 """Alexnet: visualization of the first convolution layer.
@@ -420,6 +443,8 @@ if __name__ == '__main__':
 ```
 
 ## d7_alexnet_expe_torch
+
+Utilise le model Alexnet pour deviner le contenu d'une image avec Pytorch
 
 ```py
 """Alexnet: experimental implementation with PyTorch (prediction only).
@@ -538,6 +563,8 @@ if __name__ == '__main__':
 ```
 
 ## D8_alexnet_expe_np
+
+Utilise le model Alexnet pour deviner le contenu d'une image avec NumPy
 
 ```py
 """Alexnet: experimental implementation with NumPy (prediction only).
@@ -793,6 +820,8 @@ if __name__ == '__main__':
 
 ## D9_face_analysis_ocv
 
+Utilise un reseau de neurone pour localiser les visages et definir le sexe et l'age
+
 ```py
 """Age and gender classification using CNNs (Gil Levi, Tal Hassner, CVPR 2015).
 
@@ -902,6 +931,8 @@ if __name__ == '__main__':
 
 ## D10_perturb
 
+Applique un filtre au photo situer dans le repertoire **data/photo_1/** pour les rendre inutilisable par les reseaux de neurones de google
+
 ```py
 """Adversarial perturbation of images (for GoogleNet classifier).
 
@@ -974,6 +1005,8 @@ browse_and_perturb()
 ```
 
 ## D11_patch
+
+Insere l'image **patch_vgg16 dans** toute les image du dossier **../data/photo_1**
 
 ```py
 """Adversarial perturbation of images (for VGG16).
